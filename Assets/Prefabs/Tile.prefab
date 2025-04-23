@@ -119,11 +119,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecff43172db591e44941399c4aa64d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  busy: 0
+  selected: 0
+  originalCl: {fileID: 0}
   forest: {fileID: 2100000, guid: 9c35ace8c03390f42a281be9cac1e170, type: 2}
   tileType: 
   indexX: 0
   indexY: 0
   forestCenter: {fileID: 5450265658528402362, guid: 8baabcfebdd810746936496ebaf8ec4c, type: 3}
+  enemyLink: {fileID: 0}
+  defensePheromones: {fileID: 5005422074601298292, guid: 4cb37cff39031b342bc91265b3373269, type: 3}
   mapGeneration: {fileID: 0}
 --- !u!54 &3017736237855425316
 Rigidbody:

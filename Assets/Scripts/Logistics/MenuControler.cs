@@ -5,7 +5,6 @@
 //
 // Description: Controls the scenes in the game
 *****************************************************************************/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,15 +12,29 @@ using UnityEngine.SceneManagement;
 
 public class MenuControler : MonoBehaviour
 {
-
     /// <summary>
-    /// start the game itself
+    /// start lvl 2
     /// </summary>
     public void startLvl1()
     {
         SceneManager.LoadScene("FieldScene");
     }
 
+    /// <summary>
+    /// start lvl 2
+    /// </summary>
+    public void startLvl2()
+    {
+        SceneManager.LoadScene("FieldScene2");
+    }
+
+    /// <summary>
+    /// start lvl3
+    /// </summary>
+    public void startLvl3()
+    {
+        SceneManager.LoadScene("FieldScene3");
+    }
 
     /// <summary>
     /// load main menu

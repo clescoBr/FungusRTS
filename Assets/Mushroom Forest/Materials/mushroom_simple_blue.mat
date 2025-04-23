@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: mushroom_simple_blue
   m_Shader: {fileID: 4800000, guid: 112d9d617c18b154393ad8e4b23a6ade, type: 3}
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 2100000, guid: 1387514f1794dc241b105ef930c43cf8, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -40,7 +40,6 @@ Material:
     - _RimPower: 1.8392857
     - _Shininess: 0.6882052
     m_Colors:
-    - _Color: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 1}
     - _RimColor: {r: 0.05105727, g: 0.105123624, b: 0.15686274, a: 0}
     - _SpecColor: {r: 0.09411765, g: 0.09411765, b: 0.09411765, a: 1}
   m_BuildTextureStacks: []

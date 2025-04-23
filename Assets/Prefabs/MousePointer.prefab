@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9076148952762737510
+--- !u!1 &3336279264194434238
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1938668126516303677}
-  - component: {fileID: 6982262733223545439}
-  - component: {fileID: 8124199521591729406}
-  - component: {fileID: 550280664117457344}
-  - component: {fileID: 3523511354196116582}
-  - component: {fileID: 1455271361433987168}
-  - component: {fileID: 5063144447242162902}
+  - component: {fileID: 6618136957686364510}
+  - component: {fileID: 7854695491209685140}
+  - component: {fileID: 8496268050817713260}
+  - component: {fileID: 812139036936547090}
+  - component: {fileID: 538705380682135511}
+  - component: {fileID: 2820167377495170180}
+  - component: {fileID: 9179254950080678730}
   m_Layer: 0
-  m_Name: EnemySpore
+  m_Name: MousePointer
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1938668126516303677
+--- !u!4 &6618136957686364510
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076148952762737510}
+  m_GameObject: {fileID: 3336279264194434238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.86, y: 169.23, z: 143.33}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: 86.97, y: 168.64, z: 144.03}
+  m_LocalScale: {x: 1.802862, y: 5.3199, z: 1.8338642}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6982262733223545439
+--- !u!33 &7854695491209685140
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076148952762737510}
+  m_GameObject: {fileID: 3336279264194434238}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8124199521591729406
+--- !u!23 &8496268050817713260
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076148952762737510}
+  m_GameObject: {fileID: 3336279264194434238}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 397835d93fe717344875a07035876af3, type: 2}
+  - {fileID: 2100000, guid: 085deab54cee3ca449b2e36233560b53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,13 +87,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &550280664117457344
+--- !u!135 &812139036936547090
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076148952762737510}
+  m_GameObject: {fileID: 3336279264194434238}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -108,13 +108,41 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &3523511354196116582
+--- !u!114 &538705380682135511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336279264194434238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3256f506b18a46f419843a4facc05339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zPosition: 10
+  leftPointerObject: {fileID: 3336279264194434238}
+  mouseRightCl:
+    m_Name: Mouse Right Cl
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6084f714-b006-4bfe-9fa0-bbcfa70aeca7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  playerInput: {fileID: 0}
+  leftPointer: 1
+  overlord: {fileID: 0}
+  sporicite: {fileID: 6719320218235971900, guid: 088f27fd0dfc48545a38521b763b0488, type: 3}
+  selectMaterial: {fileID: 2100000, guid: 53367887d55e7384e8302a6956d8b51b, type: 2}
+--- !u!54 &2820167377495170180
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076148952762737510}
+  m_GameObject: {fileID: 3336279264194434238}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -130,44 +158,22 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1455271361433987168
+--- !u!114 &9179254950080678730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076148952762737510}
+  m_GameObject: {fileID: 3336279264194434238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d19b5d088bd88f64da25e0a06ba6d0f2, type: 3}
+  m_Script: {fileID: 11500000, guid: e7cc7d1ba34101245948a24629686136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTile: {fileID: 5993884492421568371, guid: c316b5343dc30734f9af6c51ad9bf6ad, type: 3}
-  sporeLifeTime: 3
-  radious: 5
---- !u!135 &5063144447242162902
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076148952762737510}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  PlNutrients: 200
+  NutrientText: {fileID: 0}

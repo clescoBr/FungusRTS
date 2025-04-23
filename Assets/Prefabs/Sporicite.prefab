@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growThSpore: {fileID: 9076148952762737510, guid: bb379de8fa475d84385de9c3f2f11448, type: 3}
-  timeBetweenSpores: 3
+  timeBetweenSpores: 2.5
 --- !u!1 &7956172592644824531
 GameObject:
   m_ObjectHideFlags: 0

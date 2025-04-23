@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1455271361433987168}
   - component: {fileID: 5063144447242162902}
   m_Layer: 0
-  m_Name: EnemySpore
+  m_Name: BrownSpore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 397835d93fe717344875a07035876af3, type: 2}
+  - {fileID: 2100000, guid: 5ddee847b193da54a85b242db8cf7551, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19b5d088bd88f64da25e0a06ba6d0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTile: {fileID: 5993884492421568371, guid: c316b5343dc30734f9af6c51ad9bf6ad, type: 3}
+  enemyTile: {fileID: 6971253830667113883, guid: fa1e12f9f6072d74eab74605ed7349a0, type: 3}
   sporeLifeTime: 3
   radious: 5
 --- !u!135 &5063144447242162902
