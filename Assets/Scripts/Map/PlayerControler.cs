@@ -65,7 +65,7 @@ public class PlayerControler : MonoBehaviour
     private void Quit_performed(InputAction.CallbackContext obj)
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false; //delete this when exporting
+       // UnityEditor.EditorApplication.isPlaying = false; //delete this when exporting
     }
 
 

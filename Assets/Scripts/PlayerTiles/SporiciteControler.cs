@@ -13,15 +13,21 @@ public class SporiciteControler : MonoBehaviour
 {
     [SerializeField] private GameObject growThSpore;
     [SerializeField] private float timeBetweenSpores;
+    [SerializeField] private float distPower;
 
     private int loopCap; // the maximum amount of loops a sporicite can get throu
     private GameObject hostTile;
+    public bool sporicite;
 
     /// <summary>
     /// rotate it so it points up and start the loop of launching spores
     /// </summary>
     void Start()
     {
+        if (sporicite)
+        {
+            
+        }
         gameObject.transform.Rotate(-90, 0, 0); // rotate the sporicite at the correct angle
         StartCoroutine(wait(timeBetweenSpores));// initialize the loop 
         loopCap = 5;
@@ -33,14 +39,14 @@ public class SporiciteControler : MonoBehaviour
     IEnumerator wait(float wait)
     {
         yield return new WaitForSeconds(wait); // pause and wait
-        GameObject spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x, 
-            gameObject.transform.position.y + 3f,gameObject.transform.position.z), Quaternion.identity); // spawn spore
+        GameObject spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x*distPower, 
+            gameObject.transform.position.y + 3f,gameObject.transform.position.z * distPower), Quaternion.identity); // spawn spore
         yield return new WaitForSeconds(wait);
-        spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x, 
-            gameObject.transform.position.y + 3f,gameObject.transform.position.z), Quaternion.identity);
+        spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x * distPower, 
+            gameObject.transform.position.y + 3f,gameObject.transform.position.z * distPower), Quaternion.identity);
         yield return new WaitForSeconds(wait);
-        spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x, 
-            gameObject.transform.position.y + 3f,gameObject.transform.position.z), Quaternion.identity);
+        spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x * distPower, 
+            gameObject.transform.position.y + 3f,gameObject.transform.position.z * distPower), Quaternion.identity);
 
         if (loopCap > 0) // if loop limit not reached repeat it again
         {

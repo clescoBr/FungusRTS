@@ -12,6 +12,7 @@ using UnityEngine.InputSystem;
 public class FollowMouse2D : MonoBehaviour
 {
     public float zPosition = 10f; // Set this to the desired depth from the camera
+    public int structureIndex;
     
     private bool mousePressed;
     [SerializeField] private GameObject leftPointerObject;
@@ -24,8 +25,10 @@ public class FollowMouse2D : MonoBehaviour
 
     public GameObject overlord; // original tyle
     public GameObject sporicite; // start infecting tile
+    public GameObject giantAcid; // start kills enemy at large distance
     private GameObject abilityTarget; // tile selected by the right click
     public Material selectMaterial; // light green when hovered over tiles
+    public int pannelButton; // the control pannel buttons will be tracked throu the index 1 = sporicite 2 =
 
     /// <summary>
     /// sets up the  variables
@@ -79,15 +82,35 @@ public class FollowMouse2D : MonoBehaviour
     {
         if (!leftPointer) // there are 2 objects with this script, one of them tracks left clicks another right clicks
         {
-            if (overlord.GetComponent<OvermindController>().selected == true && // if overlord curently left clicked
-                abilityTarget.GetComponent<TileIdentity>().tileType == "PlInfected" || 
+            if (abilityTarget.GetComponent<TileIdentity>().tileType == "PlInfected" || 
                 abilityTarget.GetComponent<TileIdentity>().tileType ==  "PlDeplited")  // if the target tile is captured
             {
-                if( leftPointerObject.GetComponent<Economy>().PlNutrients >= 100) // if enough resources
+                if(pannelButton == 1)// if tool number == 1 spawn sporicite)
                 {
-                    InfectTile(abilityTarget); // spawn Sporicite ( infect tile)
-                    leftPointerObject.GetComponent<Economy>().PlNutrients -= 100; // substract the cost
-                    leftPointerObject.GetComponent<Economy>().updateNutrients(); // updates the label on the camera
+                    if (leftPointerObject.GetComponent<Economy>().PlNutrients >= 100) // if enough resources
+                    {
+                        InfectTile(abilityTarget, sporicite); // spawn Sporicite ( infect tile)
+                        leftPointerObject.GetComponent<Economy>().PlNutrients -= 100; // substract the cost
+                        leftPointerObject.GetComponent<Economy>().updateNutrients(); // updates the label on the camera
+                        
+                    }
+                }
+                else if(pannelButton == 2)
+                {
+                    
+                }
+                else if (pannelButton == 3)
+                {
+
+                }
+                else if (pannelButton == 4)
+                {
+                    if (leftPointerObject.GetComponent<Economy>().PlNutrients >= 50) // if enough resources
+                    {
+                        InfectTile(abilityTarget, giantAcid); // spawn Sporicite ( infect tile)
+                        leftPointerObject.GetComponent<Economy>().PlNutrients -= 50; // substract the cost
+                        leftPointerObject.GetComponent<Economy>().updateNutrients(); // updates the label on the camera
+                    }
                 }
             }
         }    
@@ -139,14 +162,15 @@ public class FollowMouse2D : MonoBehaviour
     /// infect a tile, the function is called by Mouse_Right_Click, when overlord is selected and a tile is rightClick
     /// </summary>
     /// <param name="tile"> the tile that was last colided with the right click</param>
-    private void InfectTile(GameObject tile)
+    private void InfectTile(GameObject tile, GameObject structure)
     {      
         tile.GetComponent<TileIdentity>().tileType = "Infected"; // set the tile type in data
         tile.GetComponent<TileIdentity>().busy = true; // set the tile as busy so nothing else can ocupy it
-        GameObject spawn = Instantiate(sporicite, new Vector3 (tile.transform.position.x, 
+        GameObject spawn = Instantiate(structure, new Vector3 (tile.transform.position.x, 
             tile.transform.position.y+ 1f, tile.transform.position.z), Quaternion.identity); //spawn mycelium, the object that initiates the capturing process
         spawn.GetComponent<SporiciteControler>().setHostTile(tile);
     }
+  
 
     /// <summary>
     ///          when the mouse pointer touches something highlighted it
@@ -170,5 +194,16 @@ public class FollowMouse2D : MonoBehaviour
             collision.gameObject.GetComponent<MeshRenderer>().material = collision.gameObject.GetComponent<TileIdentity>().originalCl;
             // return tile to original color
         }
+    }
+
+    /// <summary>
+    /// the control pannle will acces this function and send an int unique to each button
+    /// </summary>
+   
+    public void chooseTool(int index)
+    {
+        //print("indexChanged to" + index);
+        pannelButton = index;
+        
     }
 }

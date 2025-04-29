@@ -39,7 +39,7 @@ public class Economy : MonoBehaviour
     {
         tilesAsimilated ++;
         print("+");
-        if (tilesAsimilated >= 10)
+        if (tilesAsimilated >= 100)
         {
             print("won!");
             SceneManager.LoadScene("WinScreen");
