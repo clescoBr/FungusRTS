@@ -24,6 +24,7 @@ public class TileIdentity : MonoBehaviour
 
     [SerializeField] public int indexX;
     [SerializeField] public int indexY;
+    [SerializeField] bool tutorial;
 
     [SerializeField] private GameObject forestCenter; // forest that is spawned on top of a tile
 
@@ -45,7 +46,7 @@ public class TileIdentity : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>(); // gets the phisical proprieties of the tile
         busy = false; // the tile is not empty field (forest/ resource / building)
 
-        if (!busy && tileType != "forest" && Random.Range(1, 26) == 15) // if field empty take a chance of mutating
+        if (!tutorial && !busy && tileType != "forest" && Random.Range(1, 26) == 15) // if field empty take a chance of mutating
         { 
             randomDraw = Random.Range(1, 11); // if mutated draw 1/10 to see what it will become (forest / rocks/ city)
 

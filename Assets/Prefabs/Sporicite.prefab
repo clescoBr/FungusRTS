@@ -352,6 +352,9 @@ MonoBehaviour:
   growThSpore: {fileID: 9076148952762737510, guid: bb379de8fa475d84385de9c3f2f11448, type: 3}
   timeBetweenSpores: 2.5
   distPower: 1
+  loopCap: 5
+  hostTile: {fileID: 0}
+  sporicite: 1
 --- !u!1 &7956172592644824531
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,12 +11,13 @@ using UnityEngine;
 
 public class SporiciteControler : MonoBehaviour
 {
-    [SerializeField] private GameObject growThSpore;
-    [SerializeField] private float timeBetweenSpores;
-    [SerializeField] private float distPower;
+    [SerializeField] private GameObject growThSpore; // the spore itself
+    [SerializeField] private float timeBetweenSpores; // atack speed
+    [SerializeField] private float distPower; // multiply the distance of a spore
 
-    private int loopCap; // the maximum amount of loops a sporicite can get throu
-    private GameObject hostTile;
+    
+    public int loopCap; // the maximum amount of loops a sporicite can get throu
+    [SerializeField] private GameObject hostTile;
     public bool sporicite;
 
     /// <summary>
@@ -24,13 +25,11 @@ public class SporiciteControler : MonoBehaviour
     /// </summary>
     void Start()
     {
-        if (sporicite)
+        if (sporicite) // if it is sporicite then rotate
         {
-            
-        }
-        gameObject.transform.Rotate(-90, 0, 0); // rotate the sporicite at the correct angle
-        StartCoroutine(wait(timeBetweenSpores));// initialize the loop 
-        loopCap = 5;
+            gameObject.transform.Rotate(-90, 0, 0); // rotate the sporicite at the correct angle
+        }     
+        StartCoroutine(wait(timeBetweenSpores));// initialize the loop     
     }
 
     /// <summary>
@@ -38,15 +37,23 @@ public class SporiciteControler : MonoBehaviour
     /// </summary>
     IEnumerator wait(float wait)
     {
-        yield return new WaitForSeconds(wait); // pause and wait
-        GameObject spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x*distPower, 
-            gameObject.transform.position.y + 3f,gameObject.transform.position.z * distPower), Quaternion.identity); // spawn spore
-        yield return new WaitForSeconds(wait);
-        spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x * distPower, 
-            gameObject.transform.position.y + 3f,gameObject.transform.position.z * distPower), Quaternion.identity);
-        yield return new WaitForSeconds(wait);
-        spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x * distPower, 
-            gameObject.transform.position.y + 3f,gameObject.transform.position.z * distPower), Quaternion.identity);
+        for (int i = 0; i < 3; i++)
+        {
+            {
+                yield return new WaitForSeconds(wait); // pause and wait
+                if (!sporicite)
+                {
+
+                    GameObject spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x,
+                           gameObject.transform.position.y + 7f, gameObject.transform.position.z), Quaternion.identity); // spawn spore
+                }
+                else
+                {
+                    GameObject spawn = Instantiate(growThSpore, new Vector3(gameObject.transform.position.x,
+                        gameObject.transform.position.y + 3f, gameObject.transform.position.z), Quaternion.identity); // spawn spore
+                }
+            }
+        }
 
         if (loopCap > 0) // if loop limit not reached repeat it again
         {
@@ -55,7 +62,9 @@ public class SporiciteControler : MonoBehaviour
         }
         else 
         {
+            print("4" + hostTile);
             hostTile.GetComponent<TileIdentity>().tileType = "PlInfected"; // return the property to a field
+                                                                           // 
             Destroy(gameObject);
         }
     }
@@ -69,6 +78,11 @@ public class SporiciteControler : MonoBehaviour
     }
     public void setHostTile(GameObject tile)
     {
-        hostTile = tile;
+        if (!hostTile)
+        {
+            hostTile = tile;
+            print("3" + tile);
+            print("3.5" + hostTile);
+        }        
     }
 }

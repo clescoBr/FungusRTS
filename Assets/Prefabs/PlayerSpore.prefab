@@ -170,3 +170,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTile: {fileID: 7262523242699494332, guid: 0a35208762f92574ba1a35e356f64909, type: 3}
   sporeLifeTime: 4
+  dist: 5

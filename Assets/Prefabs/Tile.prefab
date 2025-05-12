@@ -126,8 +126,10 @@ MonoBehaviour:
   tileType: 
   indexX: 0
   indexY: 0
+  tutorial: 0
   forestCenter: {fileID: 5450265658528402362, guid: 8baabcfebdd810746936496ebaf8ec4c, type: 3}
   enemyLink: {fileID: 0}
+  playerLink: {fileID: 0}
   defensePheromones: {fileID: 5005422074601298292, guid: 4cb37cff39031b342bc91265b3373269, type: 3}
   mapGeneration: {fileID: 0}
 --- !u!54 &3017736237855425316

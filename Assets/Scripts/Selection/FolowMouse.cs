@@ -23,9 +23,14 @@ public class FollowMouse2D : MonoBehaviour
     public PlayerInput playerInput;
     public bool leftPointer; // is it the left clik idicator or the right click?
 
+    public bool tutorial;
+    [SerializeField] private GameObject tutorialControler;
     public GameObject overlord; // original tyle
     public GameObject sporicite; // start infecting tile
+    public GameObject spire; // start infecting tile
+    public GameObject smallAcid; // start infecting tile
     public GameObject giantAcid; // start kills enemy at large distance
+
     private GameObject abilityTarget; // tile selected by the right click
     public Material selectMaterial; // light green when hovered over tiles
     public int pannelButton; // the control pannel buttons will be tracked throu the index 1 = sporicite 2 =
@@ -52,8 +57,6 @@ public class FollowMouse2D : MonoBehaviour
         mousePress.started += Mouse_pressed;
         mousePress.canceled += Mouse_press_canceled;
         mouseRightCl.started += Mouse_right_click;
-
-
     }
 
     /// <summary>
@@ -64,7 +67,6 @@ public class FollowMouse2D : MonoBehaviour
         mousePress.started -= Mouse_pressed;
         mousePress.canceled -= Mouse_press_canceled;
         mouseRightCl.started -= Mouse_right_click;
-
     }
 
     /// <summary>
@@ -89,6 +91,15 @@ public class FollowMouse2D : MonoBehaviour
                 {
                     if (leftPointerObject.GetComponent<Economy>().PlNutrients >= 100) // if enough resources
                     {
+                        print(2);
+                        print(tutorial);
+
+                        if (tutorial == true)
+                        {
+                            tutorialControler.GetComponent<TutorialControler>().sporicitePlaced();
+                            print("yes");
+
+                        }
                         InfectTile(abilityTarget, sporicite); // spawn Sporicite ( infect tile)
                         leftPointerObject.GetComponent<Economy>().PlNutrients -= 100; // substract the cost
                         leftPointerObject.GetComponent<Economy>().updateNutrients(); // updates the label on the camera
@@ -97,11 +108,21 @@ public class FollowMouse2D : MonoBehaviour
                 }
                 else if(pannelButton == 2)
                 {
-                    
+                    if (leftPointerObject.GetComponent<Economy>().PlNutrients >= 200) // if enough resources
+                    {               
+                        InfectTile(abilityTarget, spire); // spawn Sporicite ( infect tile)
+                        leftPointerObject.GetComponent<Economy>().PlNutrients -= 200; // substract the cost
+                        leftPointerObject.GetComponent<Economy>().updateNutrients(); // updates the label on the camera
+                    }
                 }
                 else if (pannelButton == 3)
                 {
-
+                    if (leftPointerObject.GetComponent<Economy>().PlNutrients >= 75) // if enough resources
+                    {
+                        InfectTile(abilityTarget, smallAcid); // spawn Sporicite ( infect tile)
+                        leftPointerObject.GetComponent<Economy>().PlNutrients -= 75; // substract the cost
+                        leftPointerObject.GetComponent<Economy>().updateNutrients(); // updates the label on the camera
+                    }
                 }
                 else if (pannelButton == 4)
                 {
@@ -169,6 +190,7 @@ public class FollowMouse2D : MonoBehaviour
         GameObject spawn = Instantiate(structure, new Vector3 (tile.transform.position.x, 
             tile.transform.position.y+ 1f, tile.transform.position.z), Quaternion.identity); //spawn mycelium, the object that initiates the capturing process
         spawn.GetComponent<SporiciteControler>().setHostTile(tile);
+        print("2" + tile);
     }
   
 
@@ -203,7 +225,6 @@ public class FollowMouse2D : MonoBehaviour
     public void chooseTool(int index)
     {
         //print("indexChanged to" + index);
-        pannelButton = index;
-        
+        pannelButton = index;       
     }
 }

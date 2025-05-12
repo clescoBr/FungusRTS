@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 085deab54cee3ca449b2e36233560b53, type: 2}
+  - {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zPosition: 10
+  structureIndex: 0
   leftPointerObject: {fileID: 3336279264194434238}
   mouseRightCl:
     m_Name: Mouse Right Cl
@@ -133,9 +134,15 @@ MonoBehaviour:
     m_Flags: 0
   playerInput: {fileID: 0}
   leftPointer: 1
+  tutorial: 0
+  tutorialControler: {fileID: 0}
   overlord: {fileID: 0}
   sporicite: {fileID: 6719320218235971900, guid: 088f27fd0dfc48545a38521b763b0488, type: 3}
+  spire: {fileID: 0}
+  smallAcid: {fileID: 0}
+  giantAcid: {fileID: 0}
   selectMaterial: {fileID: 2100000, guid: 53367887d55e7384e8302a6956d8b51b, type: 2}
+  pannelButton: 0
 --- !u!54 &2820167377495170180
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,4 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlNutrients: 200
+  tilesAsimilated: 0
+  tut: 0
+  tutorial: {fileID: 0}
   NutrientText: {fileID: 0}

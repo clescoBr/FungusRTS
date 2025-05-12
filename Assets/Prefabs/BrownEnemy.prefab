@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growThSpore: {fileID: 9076148952762737510, guid: ab50e2ee6b6e69046bf11c0c5865b67f, type: 3}
   boostedGrowth: 1
-  timeBetweenSpores: 9
+  timeBetweenSpores: 11
 --- !u!1001 &1545006545152355507
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,14 @@ using UnityEngine.UI;
 
 public class SelectioBriefing : MonoBehaviour
 {
-    public Texture Sporicite;
+    [SerializeField] private Texture Sporicite;
+    [SerializeField] private Texture GiantAcid;
+    [SerializeField] private Texture Spire;
+    [SerializeField] private Texture SmallAcid;
+
+    /// <summary>
+    /// sees what button was presed and changes to the coresponding texture
+    /// </summary>
 
     public void changeImage(int index)
     {
@@ -23,6 +30,20 @@ public class SelectioBriefing : MonoBehaviour
         else if (index == 1)
         {
             gameObject.GetComponent<RawImage>().texture = Sporicite;
+        }
+        else if (index == 2)
+        {
+            gameObject.GetComponent<RawImage>().texture = Spire;
+
+        }
+        else if (index == 3)
+        {
+            gameObject.GetComponent<RawImage>().texture = SmallAcid;
+
+        }
+        else if (index == 4)
+        {
+            gameObject.GetComponent<RawImage>().texture = GiantAcid;
         }
     }
 }

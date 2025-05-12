@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8228986603382486474}
   - component: {fileID: 4800982812671727892}
   - component: {fileID: 1803896579097685359}
-  - component: {fileID: -6781028537202498855}
+  - component: {fileID: 9032153183394108240}
   m_Layer: 0
   m_Name: GiantAcidMushroom
   m_TagString: Untagged
@@ -116,7 +116,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6781028537202498855
+--- !u!114 &9032153183394108240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,12 +125,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1947186341588957833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad73d462be6ac8547bf7fbe071295a87, type: 3}
+  m_Script: {fileID: 11500000, guid: 04e775b93668e1f47835576d89f0c608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growThSpore: {fileID: 0}
-  timeBetweenSpores: 1
-  distPower: 3
+  growThSpore: {fileID: 9076148952762737510, guid: 6e1e8305b3cb4704a97b23e50e1082db, type: 3}
+  timeBetweenSpores: 3
+  distPower: 1
+  loopCap: 10
+  hostTile: {fileID: 0}
   sporicite: 0
 --- !u!1 &6513673685781364115
 GameObject:

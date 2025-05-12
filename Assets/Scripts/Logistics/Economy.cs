@@ -16,7 +16,8 @@ public class Economy : MonoBehaviour
 {
     public int PlNutrients; // the only resource in the game
     public int tilesAsimilated; // the only resource in the game
-
+    [SerializeField] private bool tut;
+    [SerializeField] GameObject tutorial;
     public TMP_Text NutrientText;
 
     /// <summary>
@@ -34,17 +35,20 @@ public class Economy : MonoBehaviour
     {
         PlNutrients += amount;
         updateNutrients();
+        if (tut && PlNutrients > 149)
+        { 
+            tutorial.GetComponent<TutorialControler>().resourcesGathered();
+        }
     }
     public void assimilated()
     {
         tilesAsimilated ++;
         print("+");
-        if (tilesAsimilated >= 100)
+        if (tilesAsimilated >= 250)
         {
             print("won!");
             SceneManager.LoadScene("WinScreen");
-        }
-     
+        }    
     }
     /// <summary>
     /// update the text of the variable (used not only for increasing the nutrients so in a different function

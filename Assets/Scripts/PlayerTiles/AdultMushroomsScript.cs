@@ -99,14 +99,7 @@ public class AdultMushroomsScript : MonoBehaviour
             charged = true;
         }       
     }
-    /// <summary>
-    /// steping stone to continue the loop
-    /// </summary>
-    private void growAgain()
-    {
-        StartCoroutine(wait(5));
 
-    }
 }
 
 

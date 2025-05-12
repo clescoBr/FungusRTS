@@ -15,6 +15,8 @@ public class PlayerSporeControler : MonoBehaviour
     [SerializeField] private GameObject playerTile;
     public int sporeLifeTime;
     private bool alreadyColided;
+    public float dist;
+    [SerializeField] private bool acid;
 
     /// <summary>
     /// Upon the start of this script the spore will be launched in a random location with certain boundaries
@@ -24,7 +26,7 @@ public class PlayerSporeControler : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
 
         // Create a random velocity in 3D space with random signs on all axes (X, Y, Z)
-        rb.velocity = new Vector3(5 * randomSign(), 10, 5 * randomSign());
+        rb.velocity = new Vector3(dist * randomSign(), 5+dist, dist * randomSign());
         StartCoroutine(wait(sporeLifeTime)); // start the count down after which the spore will destroy itself
     }
 
@@ -43,38 +45,50 @@ public class PlayerSporeControler : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Tile(Clone)" ) // if right pointer on a tile
+        if (!acid)
         {
-            if (collision.gameObject.GetComponent<TileIdentity>().busy == false && !alreadyColided) // if tile not colonized and it is the first touch                                                                                                 
+            if (collision.gameObject.name == "Tile(Clone)") // if right pointer on a tile
             {
-               
-                if (collision.gameObject.GetComponent<TileIdentity>().tileType == "forest") // if original tile is forest, make it in a infected forest
+
+                if (collision.gameObject.GetComponent<TileIdentity>().busy == false && !alreadyColided) // if tile not colonized and it is the first touch                                                                                                 
                 {
-                    collision.gameObject.GetComponent<TileIdentity>().tileType = "PlForest";
+                    if (collision.gameObject.GetComponent<TileIdentity>().tileType == "forest") // if original tile is forest, make it in a infected forest
+                    {
+                        collision.gameObject.GetComponent<TileIdentity>().tileType = "PlForest"; // make the forest under the player control
+                    }
+                    else // if simple tile then make it an infected field
+                    {
+                        collision.gameObject.GetComponent<TileIdentity>().tileType = "PlInfected";
+                    }
+
+                    collision.gameObject.GetComponent<TileIdentity>().busy = true;
+                    GameObject spawn = Instantiate(playerTile, new Vector3(collision.gameObject.transform.position.x,
+                        collision.gameObject.transform.position.y + 0.5f, collision.gameObject.transform.position.z),
+                        Quaternion.identity); // spawn enemy mushrooms
+
+                    spawn.gameObject.GetComponent<SpreadMycelium>().hostTiles = collision.gameObject; // gives mycelium the tile it will be spawned on so it can give
+                                                                                                      // the tile a reference to the future mushroom so those can be deleated
+                    Destroy(gameObject); // destroy spore aftre the forest was spawned
                 }
-                else // if simple tile then make it an infected field
+                else if (collision.gameObject.GetComponent<TileIdentity>().tileType == "EnemyInfected" || collision.gameObject.
+                    GetComponent<TileIdentity>().tileType == "EnemyForest") // if enemy tile call "destroyEnemy" from TileIdentity
                 {
-                    collision.gameObject.GetComponent<TileIdentity>().tileType = "PlInfected";
+                    alreadyColided = true;
+
+                    collision.gameObject.GetComponent<TileIdentity>().destroyEnemy(); // a function in TileIdentity
+                    Destroy(gameObject); // destroy spore aftre the forest was spawned
                 }
-
-                collision.gameObject.GetComponent<TileIdentity>().busy = true;
-                GameObject spawn = Instantiate(playerTile, new Vector3(collision.gameObject.transform.position.x,
-                    collision.gameObject.transform.position.y + 0.5f, collision.gameObject.transform.position.z),
-                    Quaternion.identity); // spawn enemy mushrooms
-
-                spawn.gameObject.GetComponent<SpreadMycelium>().hostTiles = collision.gameObject; // gives mycelium the tile it will be spawned on so it can give
-                // the tile a reference to the future mushroom so those can be deleated
-                Destroy(gameObject); // destroy spore aftre the forest was spawned
-            }
-            else if (collision.gameObject.GetComponent<TileIdentity>().tileType == "EnemyInfected" || collision.gameObject.
-                GetComponent<TileIdentity>().tileType == "EnemyForest") // if enemy tile call "destroyEnemy" from TileIdentity
-            {
-                alreadyColided = true;
-
-                collision.gameObject.GetComponent<TileIdentity>().destroyEnemy(); // a function in TileIdentity
-                Destroy(gameObject); // destroy spore aftre the forest was spawned
             }
         }
+        else if (collision.gameObject.name == "Tile(Clone)") // if right pointer on a tile
+        {
+            if (collision.gameObject.GetComponent<TileIdentity>().tileType == "EnemyInfected" || collision.gameObject.
+                GetComponent<TileIdentity>().tileType == "EnemyForest")
+            {
+                collision.gameObject.GetComponent<TileIdentity>().destroyEnemy(); // a function in TileIdentity
+            }
+        }
+        
     }
 
     /// <summary>
@@ -84,6 +98,5 @@ public class PlayerSporeControler : MonoBehaviour
     {
         yield return new WaitForSeconds(wait);
         Destroy(gameObject);
-
     }
 }

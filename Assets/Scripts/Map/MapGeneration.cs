@@ -24,31 +24,34 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] private GameObject tile; // the tile prefab that makes up the map
 
     [SerializeField] private int enemyAmount ; // howmany enemy types will spawn 1-3
-
-
-
-    /// <summary>
-    /// Generates the tiles, stores them in a 2-dimensional array, calls the functions that spawn the player and enemy
-    /// </summary>
-    void Start()
+    [SerializeField] private bool tutorialLvl;
+    
+   /// <summary>
+   /// Generates the tiles, stores them in a 2-dimensional array, calls the functions that spawn the player and enemy
+   /// </summary>
+   void Start()
     {
-        //generates the tiles of the map
-        for (int i = 0; i < map.GetLength(0); i++) // Loop through rows
+        //generates the tiles of the map if not tutorial
+        if (!tutorialLvl)
         {
-            for (int j = 0; j < map.GetLength(1); j++) // Loop through columns
+            for (int i = 0; i < map.GetLength(0); i++) // Loop through rows
             {
-                // Instantiate a new GameObject at a specific position in the world
-                GameObject copyTile = Instantiate(tile, new Vector3(i * 5.0f, 0, j * 5.0f), Quaternion.identity);
+                for (int j = 0; j < map.GetLength(1); j++) // Loop through columns
+                {
+                    // Instantiate a new GameObject at a specific position in the world
+                    GameObject copyTile = Instantiate(tile, new Vector3(i * 5.0f, 0, j * 5.0f), Quaternion.identity);
 
-                copyTile.GetComponent<TileIdentity>().indexX = i;
-                copyTile.GetComponent<TileIdentity>().indexY = j;
+                    copyTile.GetComponent<TileIdentity>().indexX = i;
+                    copyTile.GetComponent<TileIdentity>().indexY = j;
 
-                // Assign the newly instantiated GameObject to the array
-                map[i, j] = copyTile;
+                    // Assign the newly instantiated GameObject to the array
+                    map[i, j] = copyTile;
+                }
             }
+            spawnEnemy(); // spawn enemies
+            spawnPl(); // spawn player
         }
-        spawnEnemy(); // spawn enemies
-        spawnPl(); // spawn player
+       
     }
 
     /// <summary>
